@@ -3,11 +3,11 @@
 
 case class Scores(p1: Int, p2: Int)
 def blackjack(x: Int, y: Int): Int = Scores(x, y) match {
-  case scores @ Scores(_, _) if scores.p1 > 21 && scores.p2 > 21 => 0
-  case scores @ Scores(_, _) if scores.p1 > 21 => scores.p2
-  case scores @ Scores(_, _) if scores.p2 > 21 => scores.p1
-  case scores @ Scores(_, _) if scores.p1 > scores.p2 => scores.p1
-  case scores @ Scores(_, _) if scores.p2 >= scores.p1 => scores.p2
+  case scores if scores.p1 > 21 && scores.p2 > 21 => 0
+  case scores if scores.p1 > 21 => scores.p2
+  case scores if scores.p2 > 21 => scores.p1
+  case scores if scores.p1 > scores.p2 => scores.p1
+  case scores if scores.p2 >= scores.p1 => scores.p2
   case _ => -1
 }
 

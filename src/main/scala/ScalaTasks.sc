@@ -1,4 +1,3 @@
-import java.util
 // Hello World!
 println("Hello World")
 
@@ -167,9 +166,10 @@ def swapFirstPair(input: Array[Int]): Array[Int] = {
 println(swapFirstPair(Array(1, 2, 3, 4)).deep.mkString(", "))
 
 // Functional 1
-def getTimeZones(): Array[String] = for (i <- java.util.TimeZone.getAvailableIDs) yield i.split("/").filter(_.length > 1).tail.head.grouped(10).mkString(",")
+def getTimeZones: Array[Array[String]] = (for (j <- (for (i <- java.util.TimeZone.getAvailableIDs)
+  yield i.split("/")).filter(_.length > 1)) yield j(1)).grouped(10).toArray
 
-println(getTimeZones().mkString(","))
+println(getTimeZones.mkString(","))
 
 
 
