@@ -64,7 +64,7 @@ def sumOrNonZero(firstInt: Int, secondInt: Int): Int =
     firstInt + secondInt
 
 println(sumOrNonZero(5, 10))
-println(sumOrNonZero(5, 10))
+println(sumOrNonZero(5, 0))
 
 // Iteration
 def repeatString(inString: String, noOfCopies: Int): Unit =
