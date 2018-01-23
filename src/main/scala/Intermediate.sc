@@ -1,6 +1,5 @@
 
 // Blackjack
-
 case class Scores(p1: Int, p2: Int)
 def blackjack(x: Int, y: Int): Int = Scores(x, y) match {
   case scores if scores.p1 > 21 && scores.p2 > 21 => 0
@@ -16,7 +15,6 @@ println(blackjack(20, 18))
 println(blackjack(22, 22))
 
 // Unique Sum
-
 def uniqueSum(x: Int, y: Int, z: Int): Int =
   if (x == y)
     if (x == z)
@@ -33,7 +31,6 @@ def uniqueSum(x: Int, y: Int, z: Int): Int =
 println(uniqueSum(1, 2, 3))
 println(uniqueSum(3, 3, 3))
 println(uniqueSum(1, 1, 2))
-
 
 // Too Hot?
 def tooHot(temperature: Int, isSummer: Boolean): Boolean =

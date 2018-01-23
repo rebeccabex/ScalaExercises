@@ -1,34 +1,27 @@
 
-def getTimeZones: Array[String] = (for (j <- (for (i <- java.util.TimeZone.getAvailableIDs)
-  yield i.split("/")).filter(_.length > 1)) yield j(1)).grouped(10).toArray.flatten
 
-println(getTimeZones.mkString(", "))
+// Strings 2
 
-def getTimeZonesReduced: String = (for (k <- (for (j <- (for (i <- java.util.TimeZone.getAvailableIDs)
-  yield i.split("/")).filter(_.length > 1)) yield j(1)).grouped(10)) yield k(0)).toArray.mkString("\n")
+def modifyStringToMatch(string1: String, string2: String): String =
+  if (string1 == string2)
+    ""
+  else {
+    if (string2.contains(string1)) {
+      val begin = string2.substring(0, string2.indexOf(string1))
+      val end = string2.substring(string2.indexOf(string1) + string1.length)
+      return begin + end
+    }
+    modifyStringToMatch(string1.substring(0, string1.length - 1), string2)
+  }
 
-println(getTimeZonesReduced)
-
-//def printTimeZones(): Unit =
-//  for (i <- getTimeZones)
-//    println(i.mkString(", "))
-//
-//printTimeZones()
-//
-//println(getTimeZones(0).mkString(", "))
-//getTimeZones.foreach(println)
-
-val blah = (for (k <- (for (j <- (for (i <- java.util.TimeZone.getAvailableIDs) yield i.split("/")).filter(_.length > 1))
-  yield j(1)).grouped(10)) yield k(0)).toArray
-
-//val blah = (for (j <- (for (i <- java.util.TimeZone.getAvailableIDs) yield i.split("/")).filter(_.length > 1)) yield j(1)).grouped(10).toArray
-
-//val blah = for (j <- (for (i <- java.util.TimeZone.getAvailableIDs) yield i.split("/")).filter(_.length > 1)) yield j(1)
-
-//val blah = (for (i <- java.util.TimeZone.getAvailableIDs) yield i.split("/")).filter(_.length > 1)
-
-//val blah = for (i <- java.util.TimeZone.getAvailableIDs) yield i.split("/")
-
-//val blah = for (i <- java.util.TimeZone.getAvailableIDs) yield i
-
-println(blah.mkString("\n"))
+//var missing = ""
+//    for (i <- string1.toCharArray) {
+//      if (!string2.contains(i))
+//        missing += i
+//    }
+//    missing
+//  }
+println(modifyStringToMatch("abcde", "abcde"))
+println(modifyStringToMatch("abcd", "abcde"))
+println(modifyStringToMatch("bcd", "abcde"))
+println(modifyStringToMatch("bcdfghd", "abcde"))
