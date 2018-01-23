@@ -166,15 +166,11 @@ def swapFirstPair(input: Array[Int]): Array[Int] = {
 println(swapFirstPair(Array(1, 2, 3, 4)).deep.mkString(", "))
 
 // Functional 1
-def getTimeZones: Array[Array[String]] = (for (j <- (for (i <- java.util.TimeZone.getAvailableIDs)
-  yield i.split("/")).filter(_.length > 1)) yield j(1)).grouped(10).toArray
+def getTimeZones: String = (for (k <- (for (j <- (for (i <- java.util.TimeZone.getAvailableIDs)
+  yield i.split("/")).filter(_.length > 1)) yield j(1)).grouped(10)) yield k(0)).toArray.toString//mkString("\n")
 
-println(getTimeZones.mkString(","))
+println(getTimeZones)
 
-
-
-//for (i <- java.util.TimeZone.getAvailableIDs.grouped(10))
-//  println(i.mkString(", "))
 
 
 
