@@ -27,7 +27,7 @@ def primeTest(number: Int, primeList: ArrayBuffer[Int]): Boolean = {
 }
 
 println(noOfPrimes(3000000))
-//println(noOfPrimes(20000000))
+println(noOfPrimes(2000000000))
 
 def noOfPrimesRec(target: Int): ArrayBuffer[Int] = { //, primeList: ArrayBuffer[Int]) = {
   if (target == 2)
