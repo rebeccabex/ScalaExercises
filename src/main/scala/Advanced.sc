@@ -26,8 +26,8 @@ def primeTest(number: Int, primeList: ArrayBuffer[Int]): Boolean = {
   true
 }
 
-println(noOfPrimes(3000000))
-println(noOfPrimes(2000000000))
+//println(noOfPrimes(3000000))
+//println(noOfPrimes(2000000000))
 
 def noOfPrimesRec(target: Int): ArrayBuffer[Int] = { //, primeList: ArrayBuffer[Int]) = {
   if (target == 2)
@@ -70,6 +70,7 @@ println(commonSubSequence("abcde", "abcde"))
 println(commonSubSequence("abcd", "abcde"))
 println(commonSubSequence("bcde", "abcde"))
 println(commonSubSequence("cba", "abcde"))
+println(commonSubSequence("ade", "abcde"))
 println(commonSubSequence("fgh", "abcde"))
 println(commonSubSequence("abce", "abbceabcde"))
 
