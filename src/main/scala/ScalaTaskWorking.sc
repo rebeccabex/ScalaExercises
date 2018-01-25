@@ -14,6 +14,18 @@ println(noOfPrimesCount(3000000))
 //println(noOfPrimesCount(1000))
 //println(noOfPrimesCount(20000000))
 
+def primeStream(f: (Int, ArrayBuffer[Int]) => Boolean, n: Stream[Int]): Stream[Int] = {
+  // TODO fix so that current list of primes is passed
+  if (f(n.head, new ArrayBuffer[Int](2)))
+    n.head #:: primeStream(f, n.tail)
+  else
+    primeStream(f, n.tail)
+}
+
+println(primeStream(primeTest , infiniteList(2)).find(_ <= 100))
+
+def infiniteList(n: Int): Stream[Int] = n #:: infiniteList(n + 1)
+
 def noOfPrimesRec(target: Int, current: Int = 2, primeList: ArrayBuffer[Int] = new ArrayBuffer[Int]): ArrayBuffer[Int] = {
   if (target == current)
     if(primeTest(current, primeList))
