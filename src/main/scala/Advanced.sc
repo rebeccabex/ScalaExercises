@@ -1,4 +1,5 @@
 import scala.collection.mutable.ArrayBuffer
+import scala.util.matching.Regex.Match
 // Hashmaps
 
 def sortString(inString: String) = inString.sorted
@@ -26,7 +27,7 @@ def primeTest(number: Int, primeList: ArrayBuffer[Int]): Boolean = {
   true
 }
 
-//println(noOfPrimes(3000000))
+println(noOfPrimes(30000000))
 //println(noOfPrimes(2000000000))
 
 def noOfPrimesRec(target: Int): ArrayBuffer[Int] = { //, primeList: ArrayBuffer[Int]) = {
@@ -73,6 +74,7 @@ println(commonSubSequence("cba", "abcde"))
 println(commonSubSequence("ade", "abcde"))
 println(commonSubSequence("fgh", "abcde"))
 println(commonSubSequence("abce", "abbceabcde"))
+println(commonSubSequence("human", "chimpanzee"))
 
 def modifyStringToMatch(string1: String, string2: String, currChanges: String = ""): String =
   if (string1 == string2)
@@ -113,10 +115,23 @@ println(modifyStringToMatch("abcabd", "abcdeabchabdf"))
 println(modifyStringToMatch("conversation", "conservation"))
 
 
+def commonSubSequenceAlt(string1: String, string2: String): String = (string1, string2) match {
+  case (a, b) if a.isEmpty || b.isEmpty => ""
+  case (a, b) if a.head == b.head => string1.head + commonSubSequenceAlt(string1.tail, string2.tail)
+  case _ => longestString(commonSubSequenceAlt(string1, string2.tail), commonSubSequenceAlt(string1.tail, string2))
+}
+
+def longestString(string1: String, string2: String) = if (string1.length >= string2.length) string1 else string2
 
 
-
-
+println(commonSubSequenceAlt("abcde", "abcde"))
+println(commonSubSequenceAlt("abcd", "abcde"))
+println(commonSubSequenceAlt("bcde", "abcde"))
+println(commonSubSequenceAlt("cba", "abcde"))
+println(commonSubSequenceAlt("ade", "abcde"))
+println(commonSubSequenceAlt("fgh", "abcde"))
+println(commonSubSequenceAlt("abce", "abbceabcde"))
+println(commonSubSequenceAlt("human", "chimpanzee"))
 
 
 
